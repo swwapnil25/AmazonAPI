@@ -1,0 +1,44 @@
+db.category.insert(
+[
+    {
+        "id": 1,
+        "category": "Electronics"
+    },
+    {
+        "id": 2,
+        "category": "Home & Kitchen"
+    },
+    {
+        "id": 3,
+        "category": "Books"
+    },
+    {
+        "id": 4,
+        "category": "Health & Personal Care"
+    },
+    {
+        "id": 5,
+        "category": "Fashion"
+    },
+    {
+        "id": 6,
+        "category": "Sports & Outdoors"
+    },
+    {
+        "id": 7,
+        "category": "Beauty"
+    },
+    {
+        "id": 8,
+        "category": "Toys & Games"
+    },
+    {
+        "id": 9,
+        "category": "Automotive"
+    },
+    {
+        "id": 10,
+        "category": "Home Improvement"
+    }
+]
+)
