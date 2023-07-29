@@ -1,0 +1,57 @@
+[
+    {
+        "productType_id": 1,
+        "producttType": "Today Deals",
+        "product_name": "Earbuds",
+        "content": "Cheapest TWS Launch",
+        "price": 1050,
+        "% Off": "Up to 76% off",
+        "Deal": "Deal of the day",
+        "Brand": "Boat",
+        "image": "https://i.ibb.co/5MV79by/51-EAQs9-rv-L-AC-UY218.jpg"
+    },
+    {
+        "productType_id": 2,
+        "producttType": "Today Deals",
+        "product_name": "Walking Shoes",
+        "content": "Deals On RED TAPE",
+        "price": 1359,
+        "% Off": "Up to 86% off",
+        "Deal": "Deal of the day",
+        "Brand": "Red Tape",
+        "image": "https://i.ibb.co/tHGmx4K/31n-Qtuk-A3b-L-AC-SY200.jpg"
+    },
+    {
+        "productType_id": 3,
+        "producttType": "Today Deals",
+        "product_name": "Earbuds",
+        "content": "Price Drop On Premium Earbuds..",
+        "price": 799,
+        "% Off": "Up to 74% off",
+        "Deal": "Deal of the day",
+        "Brand": "Boat",
+        "image": "https://i.ibb.co/BLwfkzL/41j-Rk7y-QU5-L-AC-SY200.jpg"
+    },
+    {
+        "productType_id": 4,
+        "producttType": "Today Deals",
+        "product_name": "Watch",
+        "content": "Noise Newly Launched Watches",
+        "price": 2699,
+        "% Off": "Up to 80% off",
+        "Deal": "Deal of the day",
+        "Brand": "NIBOSI",
+        "image": "https://i.ibb.co/HD44gKZ/51-NFLxxqhs-L-AC-SR400-600.jpg"
+    },
+    {
+        "productType_id": 5,
+        "producttType": "Today Deals",
+        "product_name": "Digital Men's & Boy's Watch",
+        "content": "Top Deals On Titan, FastTrack..",
+        "price": 1050,
+        "% Off": "Up to 64% off",
+        "Deal": "Deal of the day",
+        "Brand": "V2A Analogueue",
+        "image": "https://i.ibb.co/WBy25ZB/41x-NB9-WGLDL-AC-SY200.jpg"
+    }
+]

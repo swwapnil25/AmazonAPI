@@ -3,7 +3,7 @@ db.products.insert(
 [
     {
         "id": 1,
-        "category_id": 1,
+        "productType_id": 1,
         "category": "Electronic",
         "product_name": "laptop",
         "price": 85000,
@@ -16,8 +16,8 @@ db.products.insert(
     },
     {
         "id": 2,
-        "category_id": 1,
-        "category": "Electronic",
+        "productType_id": 1,
+        "category_id": "Electronic",
         "product_name": "Smartphone",
         "price": 10000,
         "screen_size": "4-4.4 in",
@@ -61,7 +61,7 @@ db.products.insert(
     },
     {
         "id": 6,
-        "category_id": 2,
+        "productType_id": 2,
         "category": "Home & Kitchen",
         "product_name": "kitchen appliances",
         "color": "Multicolor",
@@ -72,7 +72,7 @@ db.products.insert(
     },
     {
         "id": 7,
-        "category_id": 2,
+        "productType_id": 2,
         "category": "Home & Kitchen",
         "product_name": "Water Purifiers",
         "color": "Black",

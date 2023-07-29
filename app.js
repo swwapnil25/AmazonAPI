@@ -1,10 +1,11 @@
 let express = require('express');
 let app = express();
-let port = 9000;
+let port = process.env.PORT||9000;
 let Mongo = require('mongodb')
 const bodyParser =require('body-parser');
 const cors = require('cors');
 let { dbConnect, getData, postData, updateOrder, deleteOrder}  = require('./controller/dbController')
+
 
 // middleware  --- are supporting library
 app.use(bodyParser.json());
@@ -32,6 +33,13 @@ app.get('/products', async (req, res) => {
     res.send(output);
 })
 
+app.get('/name', async (req, res) => {
+    let query = {};
+    let collection = "name"
+    let output = await getData(collection, query)
+    res.send(output);
+})
+
 
 // product as per Selection (Category or Product)
 app.get('/quickSearch', async (req, res) => {
@@ -53,6 +61,47 @@ app.get('/quickSearch', async (req, res) => {
 })
 
 
+// product.json as per Selection (Category or Product)
+app.get('/product', async (req, res) => {
+    let query = {};
+    if(req.query.categoryid){
+        query={category_id: Number(req.query.categoryid)}
+    }
+    else if(req.query.productid){
+
+        query={"productType_id": Number(req.query.productid)}
+    }
+    
+    else{
+        query={}
+    }
+    let collection = "products"
+    let output = await getData(collection, query)
+    res.send(output);
+})
+
+
+
+// product.json as per Selection (Category or Product)
+app.get('/product1', async (req, res) => {
+    let query = {};
+    if(req.query.categoryid){
+        query={category_id: Number(req.query.categoryid)}
+    }
+    else if(req.query.productid){
+
+        query={"productType_id": Number(req.query.productid)}
+    }
+    
+    else{
+        query={}
+    }
+    let collection = "product1"
+    let output = await getData(collection, query)
+    res.send(output);
+})
+
+
 
 // products according to Lowest price & Highest Price(filter)
 app.get('/filter/:id',async(req,res)=>{
@@ -62,30 +111,134 @@ app.get('/filter/:id',async(req,res)=>{
     let output = await getData(collection,query)
     res.send(output)
 })
-app.get('/price',async(req,res)=>{
+
+// CusineFilter Sathi
+// app.get('/filter/:productid', async(req,res) => {
+//     let productid = Number(req.params.productid);
+//     // let cuisineId = Number(req.query.cuisineId)
+//     let lcost = Number(req.query.lcost)
+//     let hcost = Number(req.query.hcost)
+//     if(productid){
+//         query = {
+//             "productTypes.productType_id":productid,
+//             // "cuisines.cuisine_id":cuisineId
+//         }
+//     } else if(lcost && hcost){
+//         query = {
+//             "productTypes.productType_id":productid,
+//             $and:[{price:{$gt:lcost,$lt:hcost}}]
+//         }
+//     }
+//     else{
+//         query = {}
+//     }
+//     let collection = "product1";
+//     let output = await getData(collection,query);
+//     res.send(output)
+// })
+
+
+
+// costFilter sathi
+// app.get('/price',async(req,res)=>{
+//     let productid = Number(req.params.productid);
+//     let lcost = Number(req.query.lcost);
+//     let hcost =Number(req.query.hcost); 
+//     let query = {}
+//     if (lcost && hcost){
+//         query = {
+//             "productType_id": productid,
+//             $and:[{price:{$gt:lcost, $lt:hcost}}]
+//         }
+//     }
+//     else{
+//         query = {}
+//     }
+//     let collection = "product1"
+//     let output = await getData(collection,query)
+//     res.send(output)
+// })
+
+
+app.get('/price/:productid', async (req, res) => {
+    let productid = Number(req.params.productid);
     let lcost = Number(req.query.lcost);
-    let hcost =Number(req.query.hcost); 
+    let hcost = Number(req.query.hcost);
     let query = {}
-    if (lcost && hcost){
+    if (lcost && hcost) {
         query = {
-            $and:[{price:{$gt:lcost, $lt:hcost}}]
+            "productType_id": productid,
+            $and: [{ price: { $gt: lcost, $lt: hcost } }]
         }
     }
-    else{
+    else {
         query = {}
     }
-    let collection = "products"
+    let collection = "product1"
+    let output = await getData(collection, query)
+    res.send(output)
+})
+
+
+// app.get('/product/:productid', async (req, res) => {
+//     let productid = Number(req.params.productid);
+//     // let lcost = Number(req.query.lcost);
+//     // let hcost = Number(req.query.hcost);
+//     let query = {}
+
+     
+//         query = {
+//             "productType_id": productid,
+//             // "productid":productType_id
+
+//         }
+   
+//     let collection = "product1"
+//     let output = await getData(collection, query)
+//     res.send(output)
+// })
+
+
+// For Product
+app.get('/product/:productid', async(req,res)=>{
+    let productid = Number(req.params.productid);
+    // let id = Number(req.params.id);
+    let query =  {productType_id: productid}
+    let collection = "product1"
     let output = await getData(collection,query)
     res.send(output)
 })
 
+
+
+
 // Details Of The Products
-app.get('/details/:id', async(req,res)=>{
+app.get('/detail/:id', async(req,res)=>{
 
     let id = Number(req.params.id);
     let query = {id:id}
     let collection = "products"
     let output = await getData(collection,query)
+    res.send(output)
+})
+
+// Details Of The Product1
+app.get('/details/:id', async(req,res)=>{
+
+    let id = Number(req.params.id);
+    let query = {id:id}
+    let collection = "product1"
+    let output = await getData(collection,query)
+    res.send(output)
+})
+
+
+
+app.get('/producttype/:id',async(req,res) => {
+    let id = Number(req.params.id);
+    let query = {productType_id:id};
+    let collection = "product1";
+    let output = await getData(collection,query);
     res.send(output)
 })
 
@@ -116,7 +269,7 @@ app.post('/placeorder',async(req,res)=>{
     let data = req.body;
     let collection = "orders";
     console.log(">>>", data)
-    let output = await postData(collection,data)
+    let response = await postData(collection,data)
     res.send(response)
 })
 
@@ -164,4 +317,3 @@ app.listen(port, (err) => {
     if (err) throw err;
     console.log(`server is running on port ${port}`)
 })
-
