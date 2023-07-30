@@ -33,9 +33,19 @@ app.get('/products', async (req, res) => {
     res.send(output);
 })
 
+
+// Get All Names
 app.get('/name', async (req, res) => {
     let query = {};
     let collection = "name"
+    let output = await getData(collection, query)
+    res.send(output);
+})
+
+// Get All names1
+app.get('/name1', async (req, res) => {
+    let query = {};
+    let collection = "name1"
     let output = await getData(collection, query)
     res.send(output);
 })
