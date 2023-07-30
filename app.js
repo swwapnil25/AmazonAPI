@@ -49,6 +49,24 @@ app.get('/name1', async (req, res) => {
     let output = await getData(collection, query)
     res.send(output);
 })
+app.get('/name2', async (req, res) => {
+    let query = {};
+    let collection = "name2"
+    let output = await getData(collection, query)
+    res.send(output);
+})
+app.get('/name3', async (req, res) => {
+    let query = {};
+    let collection = "name3"
+    let output = await getData(collection, query)
+    res.send(output);
+})
+app.get('/name4', async (req, res) => {
+    let query = {};
+    let collection = "name4"
+    let output = await getData(collection, query)
+    res.send(output);
+})
 
 
 // product as per Selection (Category or Product)
