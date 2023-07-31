@@ -34,7 +34,7 @@ app.get('/products', async (req, res) => {
 })
 
 
-// Get All Names
+// Get All Names(Conatiner)
 app.get('/name', async (req, res) => {
     let query = {};
     let collection = "name"
@@ -42,7 +42,7 @@ app.get('/name', async (req, res) => {
     res.send(output);
 })
 
-// Get All names1
+// Get All Names 1,2,3,4....(Product_Container)
 app.get('/name1', async (req, res) => {
     let query = {};
     let collection = "name1"
@@ -260,6 +260,8 @@ app.get('/details/:id', async(req,res)=>{
     res.send(output)
 })
 
+
+// Get All the Details Name 1,2,3,4....(Product_Container)
 app.get('/details1/:id', async(req,res)=>{
 
     let id = Number(req.params.id);
@@ -274,6 +276,22 @@ app.get('/details2/:id', async(req,res)=>{
     let id = Number(req.params.id);
     let query = {id:id}
     let collection = "name2"
+    let output = await getData(collection,query)
+    res.send(output)
+})
+app.get('/details3/:id', async(req,res)=>{
+
+    let id = Number(req.params.id);
+    let query = {id:id}
+    let collection = "name3"
+    let output = await getData(collection,query)
+    res.send(output)
+})
+app.get('/details4/:id', async(req,res)=>{
+
+    let id = Number(req.params.id);
+    let query = {id:id}
+    let collection = "name4"
     let output = await getData(collection,query)
     res.send(output)
 })
