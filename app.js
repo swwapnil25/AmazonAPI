@@ -269,6 +269,8 @@ app.get('/details1/:id', async(req,res)=>{
     res.send(output)
 })
 
+
+
 app.get('/producttype1/:id',async(req,res) => {
     let id = Number(req.params.id);
     let query = {productType_id:id};
