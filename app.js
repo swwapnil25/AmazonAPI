@@ -260,6 +260,23 @@ app.get('/details/:id', async(req,res)=>{
     res.send(output)
 })
 
+app.get('/details1/:id', async(req,res)=>{
+
+    let id = Number(req.params.id);
+    let query = {id:id}
+    let collection = "name1"
+    let output = await getData(collection,query)
+    res.send(output)
+})
+
+app.get('/producttype1/:id',async(req,res) => {
+    let id = Number(req.params.id);
+    let query = {productType_id:id};
+    let collection = "name1";
+    let output = await getData(collection,query);
+    res.send(output)
+})
+
 
 
 app.get('/producttype/:id',async(req,res) => {
