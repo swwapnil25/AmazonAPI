@@ -387,10 +387,16 @@ app.delete('/deleteOrder',async(req,res)=>{
 // Delete Order
 app.delete('/deleteOrder/:id', async (req, res) => {
     let collection = "orders";
-    let condition = { id: Number(req.params.id) }; // Use req.params.id to get the order ID from the URL
-    let output = await deleteOrder(collection, condition);
-    res.send(output);
+    let condition = { id: Number(req.params.id) };
+    
+    try {
+        let output = await deleteOrder(collection, condition);
+        res.send(output);
+    } catch (error) {
+        res.status(500).send("Error deleting order.");
+    }
 });
+
 
 
 // app.delete('/deleteOrder', async (req, res) => {
