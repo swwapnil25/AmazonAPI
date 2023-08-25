@@ -378,25 +378,37 @@ app.put('/updateOrder', async (req,res)=>{
 // Delete Order
 
 
-// app.delete('/deleteOrder',async(req,res)=>{
-//     let collection = "orders"
-//     let condition = {product_id:req.body.product_id}
-//     let output = await deleteOrder(collection,condition)
-//     res.send(output)
-// })
+app.delete('/deleteOrder',async(req,res)=>{
+    let collection = "orders"
+    let condition = {product_id:req.body.product_id}
+    let output = await deleteOrder(collection,condition)
+    res.send(output)
+})
+// Delete Order
+app.delete('/deleteOrder/:id', async (req, res) => {
+    let collection = "orders";
+    let condition = { id: Number(req.params.id) };
 
-
-app.delete('/deleteOrder', async (req, res) => {
     try {
-        let collection = "orders";
-        let condition = { id: req.query.id };
         let output = await deleteOrder(collection, condition);
         res.send(output);
     } catch (error) {
-        console.error('Error deleting order:', error);
-        res.status(500).json({ error: "An error occurred while deleting the order." });
+        res.status(500).send("Error deleting order.");
     }
 });
+
+
+// app.delete('/deleteOrder', async (req, res) => {
+//     try {
+//         let collection = "orders";
+//         let condition = { id: req.query.id };
+//         let output = await deleteOrder(collection, condition);
+//         res.send(output);
+//     } catch (error) {
+//         console.error('Error deleting order:', error);
+//         res.status(500).json({ error: "An error occurred while deleting the order." });
+//     }
+// });
 
 
 
