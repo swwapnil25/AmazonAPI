@@ -389,7 +389,7 @@ app.put('/updateOrder', async (req,res)=>{
 app.delete('/deleteOrder', async (req, res) => {
     try {
         let collection = "orders";
-        let condition = { product_id: req.query.product_id };
+        let condition = { id: req.query.id };
         let output = await deleteOrder(collection, condition);
         res.send(output);
     } catch (error) {
